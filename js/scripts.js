@@ -33,7 +33,6 @@ var bounds_group = new L.featureGroup([]);
 function setBounds() {}
 
 // Kulterulet
-function pop_kulterulet_0() {}
 function style_kulterulet_0_0() {
   return {
     pane: 'pane_kulterulet_0',
@@ -49,7 +48,6 @@ map.getPane('pane_kulterulet_0').style['mix-blend-mode'] = 'normal';
 var layer_kulterulet_0 = new L.geoJson(json_kulterulet_0, {
   attribution: '',
   pane: 'pane_kulterulet_0',
-  onEachFeature: pop_kulterulet_0,
   style: style_kulterulet_0_0,
 });
 bounds_group.addLayer(layer_kulterulet_0);
@@ -60,32 +58,6 @@ map.fitBounds(layer_kulterulet_0.getBounds());
 document.getElementById('zoom').addEventListener('click', () => map.flyToBounds(layer_kulterulet_0.getBounds()));
 
 // Belterulet
-function pop_belterulet_1(feature, layer) {
-  var popupContent =
-    '<table>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['Nev'] !== null ? Autolinker.link(String(feature.properties['Nev'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['KSH_kod'] !== null ? Autolinker.link(String(feature.properties['KSH_kod'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['KSH_kod_2'] !== null ? Autolinker.link(String(feature.properties['KSH_kod_2'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['telepules'] !== null ? Autolinker.link(String(feature.properties['telepules'])) : '') +
-    '</td>\
-          </tr>\
-      </table>';
-  layer.bindPopup(popupContent, { maxHeight: 400 });
-}
 function style_belterulet_1_0() {
   return {
     pane: 'pane_belterulet_1',
@@ -106,24 +78,12 @@ map.getPane('pane_belterulet_1').style['mix-blend-mode'] = 'normal';
 var layer_belterulet_1 = new L.geoJson(json_belterulet_1, {
   attribution: '',
   pane: 'pane_belterulet_1',
-  onEachFeature: pop_belterulet_1,
   style: style_belterulet_1_0,
 });
 bounds_group.addLayer(layer_belterulet_1);
 map.addLayer(layer_belterulet_1);
 
 // Butterfly
-function pop_pillango_2(feature, layer) {
-  var popupContent =
-    '<table>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['terulet'] !== null ? Autolinker.link(String(feature.properties['terulet'])) : '') +
-    '</td>\
-          </tr>\
-      </table>';
-  layer.bindPopup(popupContent, { maxHeight: 400 });
-}
 function style_pillango_2_0() {
   return {
     pane: 'pane_pillango_2',
@@ -139,24 +99,12 @@ map.getPane('pane_pillango_2').style['mix-blend-mode'] = 'normal';
 var layer_pillango_2 = new L.geoJson(json_pillango_2, {
   attribution: '',
   pane: 'pane_pillango_2',
-  onEachFeature: pop_pillango_2,
   style: style_pillango_2_0,
 });
 bounds_group.addLayer(layer_pillango_2);
 map.addLayer(layer_pillango_2);
 
 // River polygon
-function pop_folyo_polygon_3(feature, layer) {
-  var popupContent =
-    '<table>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['Nev'] !== null ? Autolinker.link(String(feature.properties['Nev'])) : '') +
-    '</td>\
-          </tr>\
-      </table>';
-  layer.bindPopup(popupContent, { maxHeight: 400 });
-}
 function style_folyo_polygon_3_0() {
   return {
     pane: 'pane_folyo_polygon_3',
@@ -172,24 +120,12 @@ map.getPane('pane_folyo_polygon_3').style['mix-blend-mode'] = 'normal';
 var layer_folyo_polygon_3 = new L.geoJson(json_folyo_polygon_3, {
   attribution: '',
   pane: 'pane_folyo_polygon_3',
-  onEachFeature: pop_folyo_polygon_3,
   style: style_folyo_polygon_3_0,
 });
 bounds_group.addLayer(layer_folyo_polygon_3);
 map.addLayer(layer_folyo_polygon_3);
 
 // River line
-function pop_folyo_vonal_4(feature, layer) {
-  var popupContent =
-    '<table>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['Nev'] !== null ? Autolinker.link(String(feature.properties['Nev'])) : '') +
-    '</td>\
-          </tr>\
-      </table>';
-  layer.bindPopup(popupContent, { maxHeight: 400 });
-}
 function style_folyo_vonal_4_0() {
   return {
     pane: 'pane_folyo_vonal_4',
@@ -208,14 +144,12 @@ map.getPane('pane_folyo_vonal_4').style['mix-blend-mode'] = 'normal';
 var layer_folyo_vonal_4 = new L.geoJson(json_folyo_vonal_4, {
   attribution: '',
   pane: 'pane_folyo_vonal_4',
-  onEachFeature: pop_folyo_vonal_4,
   style: style_folyo_vonal_4_0,
 });
 bounds_group.addLayer(layer_folyo_vonal_4);
 map.addLayer(layer_folyo_vonal_4);
 
 // Stream
-function pop_patak_5() {}
 function style_patak_5_0() {
   return {
     pane: 'pane_patak_5',
@@ -234,14 +168,12 @@ map.getPane('pane_patak_5').style['mix-blend-mode'] = 'normal';
 var layer_patak_5 = new L.geoJson(json_patak_5, {
   attribution: '',
   pane: 'pane_patak_5',
-  onEachFeature: pop_patak_5,
   style: style_patak_5_0,
 });
 bounds_group.addLayer(layer_patak_5);
 map.addLayer(layer_patak_5);
 
 // Lake
-function pop_to_6() {}
 function style_to_6_0() {
   return {
     pane: 'pane_to_6',
@@ -262,14 +194,12 @@ map.getPane('pane_to_6').style['mix-blend-mode'] = 'normal';
 var layer_to_6 = new L.geoJson(json_to_6, {
   attribution: '',
   pane: 'pane_to_6',
-  onEachFeature: pop_to_6,
   style: style_to_6_0,
 });
 bounds_group.addLayer(layer_to_6);
 map.addLayer(layer_to_6);
 
 // Country border
-function pop_megyehatar_7() {}
 function style_megyehatar_7_0() {
   return {
     pane: 'pane_megyehatar_7',
@@ -288,44 +218,12 @@ map.getPane('pane_megyehatar_7').style['mix-blend-mode'] = 'normal';
 var layer_megyehatar_7 = new L.geoJson(json_megyehatar_7, {
   attribution: '',
   pane: 'pane_megyehatar_7',
-  onEachFeature: pop_megyehatar_7,
   style: style_megyehatar_7_0,
 });
 bounds_group.addLayer(layer_megyehatar_7);
 map.addLayer(layer_megyehatar_7);
 
 // Railway
-function pop_vasut_8(feature, layer) {
-  var popupContent =
-    '<table>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['nev'] !== null ? Autolinker.link(String(feature.properties['nev'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['tipus'] !== null ? Autolinker.link(String(feature.properties['tipus'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['vonalszam'] !== null ? Autolinker.link(String(feature.properties['vonalszam'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['statusz'] !== null ? Autolinker.link(String(feature.properties['statusz'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['uzemelteto'] !== null ? Autolinker.link(String(feature.properties['uzemelteto'])) : '') +
-    '</td>\
-          </tr>\
-      </table>';
-  layer.bindPopup(popupContent, { maxHeight: 400 });
-}
 function style_vasut_8_0() {
   return {
     pane: 'pane_vasut_8',
@@ -356,14 +254,12 @@ map.getPane('pane_vasut_8').style['mix-blend-mode'] = 'normal';
 var layer_vasut_8 = new L.geoJson.multiStyle(json_vasut_8, {
   attribution: '',
   pane: 'pane_vasut_8',
-  onEachFeature: pop_vasut_8,
   styles: [style_vasut_8_0, style_vasut_8_1],
 });
 bounds_group.addLayer(layer_vasut_8);
 map.addLayer(layer_vasut_8);
 
 // Road
-function pop_ut_9() {}
 function style_ut_9_0() {
   return {
     pane: 'pane_ut_9',
@@ -394,34 +290,12 @@ map.getPane('pane_ut_9').style['mix-blend-mode'] = 'normal';
 var layer_ut_9 = new L.geoJson.multiStyle(json_ut_9, {
   attribution: '',
   pane: 'pane_ut_9',
-  onEachFeature: pop_ut_9,
   styles: [style_ut_9_0, style_ut_9_1],
 });
 bounds_group.addLayer(layer_ut_9);
 map.addLayer(layer_ut_9);
 
 // Main road
-function pop_fout_10(feature, layer) {
-  var popupContent =
-    '<table>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['Utszam'] !== null ? Autolinker.link(String(feature.properties['Utszam'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['Tipus'] !== null ? Autolinker.link(String(feature.properties['Tipus'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['Seb_korlat'] !== null ? Autolinker.link(String(feature.properties['Seb_korlat'])) : '') +
-    '</td>\
-          </tr>\
-      </table>';
-  layer.bindPopup(popupContent, { maxHeight: 400 });
-}
 function style_fout_10_0(feature) {
   switch (String(feature.properties['Tipus'])) {
     case 'autopalya':
@@ -557,7 +431,6 @@ map.getPane('pane_fout_10').style['mix-blend-mode'] = 'normal';
 var layer_fout_10 = new L.geoJson.multiStyle(json_fout_10, {
   attribution: '',
   pane: 'pane_fout_10',
-  onEachFeature: pop_fout_10,
   styles: [style_fout_10_0, style_fout_10_1, style_fout_10_2],
 });
 bounds_group.addLayer(layer_fout_10);
@@ -565,6 +438,7 @@ map.addLayer(layer_fout_10);
 
 // Settlement
 function pop_telepules_11(feature, layer) {
+  console.log('telep');
   var popupContent =
     '<table>\
           <tr>\
@@ -721,6 +595,7 @@ var layer_telepules_11 = new L.geoJson(json_telepules_11, {
 });
 bounds_group.addLayer(layer_telepules_11);
 map.addLayer(layer_telepules_11);
+layer_telepules_11.on('click', (e) => console.log(e.layer));
 
 var baseMaps = {};
 L.control
@@ -745,12 +620,10 @@ L.control
         layer_fout_10,
       '<img src="legend/ut_9.png" /> út': layer_ut_9,
       '<img src="legend/vasut_8.png" /> vasút': layer_vasut_8,
-      '<img src="legend/megyehatar_7.png" /> megyehatár': layer_megyehatar_7,
       '<img src="legend/to_6.png" /> tó': layer_to_6,
       '<img src="legend/patak_5.png" /> patak': layer_patak_5,
       '<img src="legend/folyo_vonal_4.png" /> folyó (vonal)': layer_folyo_vonal_4,
       '<img src="legend/folyo_polygon_3.png" /> folyó (polygon)': layer_folyo_polygon_3,
-      '<img src="legend/pillango_2.png" /> pillangó': layer_pillango_2,
       '<img src="legend/belterulet_1.png" /> belterület': layer_belterulet_1,
       '<img src="legend/kulterulet_0.png" /> külterület': layer_kulterulet_0,
     },
@@ -787,5 +660,9 @@ map.on('layerremove', () => {
 });
 
 // own
-document.getElementById('butterfly').addEventListener('change', () => console.log('lol'));
-document.getElementById('age').addEventListener('change', () => console.log('lol'));
+document.getElementById('butterfly').addEventListener('change', () => {
+  map.addLayer(layer_pillango_2);
+});
+document.getElementById('age').addEventListener('change', () => {
+  map.removeLayer(layer_pillango_2);
+});
