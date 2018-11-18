@@ -727,41 +727,38 @@ L.control
   .layers(
     baseMaps,
     {
-      'telepules<br /><table><tr><td style="text-align: center;"><img src="legend/telepules_11_község0.png" /></td><td>község</td></tr><tr><td style="text-align: center;"><img src="legend/telepules_11_megyeijogúváros1.png" /></td><td>megyei jogú város</td></tr><tr><td style="text-align: center;"><img src="legend/telepules_11_nagyközség2.png" /></td><td>nagyközség</td></tr><tr><td style="text-align: center;"><img src="legend/telepules_11_város3.png" /></td><td>város</td></tr></table>': layer_telepules_11,
-      'fout<br /><table><tr><td style="text-align: center;"><img src="legend/fout_10_autópálya0.png" /></td><td>autópálya</td></tr><tr><td style="text-align: center;"><img src="legend/fout_10_autóút1.png" /></td><td>autóút</td></tr><tr><td style="text-align: center;"><img src="legend/fout_10_elsőrendűút2.png" /></td><td>elsőrendű út</td></tr><tr><td style="text-align: center;"><img src="legend/fout_10_másodrendűút3.png" /></td><td>másodrendű út</td></tr></table>': layer_fout_10,
-      '<img src="legend/ut_9.png" /> ut': layer_ut_9,
-      '<img src="legend/vasut_8.png" /> vasut': layer_vasut_8,
-      '<img src="legend/megyehatar_7.png" /> megyehatar': layer_megyehatar_7,
-      '<img src="legend/to_6.png" /> to': layer_to_6,
+      'település<br />\
+        <table>\
+          <tr><td style="text-align: center;"><img src="legend/telepules_11_megyeijogúváros1.png" /></td><td>megyei jogú város</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/telepules_11_város3.png" /></td><td>város</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/telepules_11_nagyközség2.png" /></td><td>nagyközség</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/telepules_11_község0.png" /></td><td>község</td></tr>\
+        </table>':
+        layer_telepules_11,
+      'főút<br />\
+        <table>\
+          <tr><td style="text-align: center;"><img src="legend/fout_10_autópálya0.png" /></td><td>autópálya</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/fout_10_autóút1.png" /></td><td>autóút</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/fout_10_elsőrendűút2.png" /></td><td>elsőrendű út</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/fout_10_másodrendűút3.png" /></td><td>másodrendű út</td></tr>\
+        </table>':
+        layer_fout_10,
+      '<img src="legend/ut_9.png" /> út': layer_ut_9,
+      '<img src="legend/vasut_8.png" /> vasút': layer_vasut_8,
+      '<img src="legend/megyehatar_7.png" /> megyehatár': layer_megyehatar_7,
+      '<img src="legend/to_6.png" /> tó': layer_to_6,
       '<img src="legend/patak_5.png" /> patak': layer_patak_5,
-      '<img src="legend/folyo_vonal_4.png" /> folyo_vonal': layer_folyo_vonal_4,
-      '<img src="legend/folyo_polygon_3.png" /> folyo_polygon': layer_folyo_polygon_3,
-      '<img src="legend/pillango_2.png" /> pillango': layer_pillango_2,
-      '<img src="legend/belterulet_1.png" /> belterulet': layer_belterulet_1,
-      '<img src="legend/kulterulet_0.png" /> kulterulet': layer_kulterulet_0,
+      '<img src="legend/folyo_vonal_4.png" /> folyó (vonal)': layer_folyo_vonal_4,
+      '<img src="legend/folyo_polygon_3.png" /> folyó (polygon)': layer_folyo_polygon_3,
+      '<img src="legend/pillango_2.png" /> pillangó': layer_pillango_2,
+      '<img src="legend/belterulet_1.png" /> belterület': layer_belterulet_1,
+      '<img src="legend/kulterulet_0.png" /> külterület': layer_kulterulet_0,
     },
     { collapsed: false },
   )
   .addTo(map);
 setBounds();
 var i = 0;
-layer_megyehatar_7.eachLayer((layer) => {
-  layer.bindTooltip(
-    layer.feature.properties['Megye_nev'] !== null
-      ? String(
-        '<div style="color: #000000; font-size: 16pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' +
-          layer.feature.properties['Megye_nev'],
-      ) + '</div>'
-      : '',
-    { permanent: true, offset: [-0, -16], className: 'css_megyehatar_7' },
-  );
-  labels.push(layer);
-  window.totalMarkers += 1;
-  layer.added = true; // eslint-disable-line no-param-reassign
-  addLabel(layer, i);
-  i++;
-});
-i = 0;
 layer_telepules_11.eachLayer((layer) => {
   layer.bindTooltip(
     layer.feature.properties['Telnev'] !== null
@@ -778,13 +775,17 @@ layer_telepules_11.eachLayer((layer) => {
   addLabel(layer, i);
   i++;
 });
-resetLabels([layer_megyehatar_7, layer_telepules_11]);
+resetLabels([layer_telepules_11]);
 map.on('zoomend', () => {
-  resetLabels([layer_megyehatar_7, layer_telepules_11]);
+  resetLabels([layer_telepules_11]);
 });
 map.on('layeradd', () => {
-  resetLabels([layer_megyehatar_7, layer_telepules_11]);
+  resetLabels([layer_telepules_11]);
 });
 map.on('layerremove', () => {
-  resetLabels([layer_megyehatar_7, layer_telepules_11]);
+  resetLabels([layer_telepules_11]);
 });
+
+// own
+document.getElementById('butterfly').addEventListener('change', () => console.log('lol'));
+document.getElementById('age').addEventListener('change', () => console.log('lol'));
