@@ -437,88 +437,6 @@ bounds_group.addLayer(layer_fout_10);
 map.addLayer(layer_fout_10);
 
 // Settlement
-function pop_telepules_11(feature, layer) {
-  console.log('telep');
-  var popupContent =
-    '<table>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['Telnev'] !== null ? Autolinker.link(String(feature.properties['Telnev'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['Ir_szam'] !== null ? Autolinker.link(String(feature.properties['Ir_szam'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['Tel_status'] !== null ? Autolinker.link(String(feature.properties['Tel_status'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['KSH_kod'] !== null ? Autolinker.link(String(feature.properties['KSH_kod'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['gyermek'] !== null ? Autolinker.link(String(feature.properties['gyermek'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['fiatal'] !== null ? Autolinker.link(String(feature.properties['fiatal'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['kozepkoru'] !== null ? Autolinker.link(String(feature.properties['kozepkoru'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['nyugdijas'] !== null ? Autolinker.link(String(feature.properties['nyugdijas'])) : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['iskola_altalanos'] !== null
-      ? Autolinker.link(String(feature.properties['iskola_altalanos']))
-      : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['iskola_kozepiskola'] !== null
-      ? Autolinker.link(String(feature.properties['iskola_kozepiskola']))
-      : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['iskola_erettsegi'] !== null
-      ? Autolinker.link(String(feature.properties['iskola_erettsegi']))
-      : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['iskola_felsofoku'] !== null
-      ? Autolinker.link(String(feature.properties['iskola_felsofoku']))
-      : '') +
-    '</td>\
-          </tr>\
-          <tr>\
-              <td colspan="2">' +
-    (feature.properties['iskola_osszesen'] !== null
-      ? Autolinker.link(String(feature.properties['iskola_osszesen']))
-      : '') +
-    '</td>\
-          </tr>\
-      </table>';
-  layer.bindPopup(popupContent, { maxHeight: 400 });
-}
 function style_telepules_11_0(feature) {
   switch (String(feature.properties['Tel_status'])) {
     case 'község':
@@ -588,14 +506,16 @@ map.getPane('pane_telepules_11').style['mix-blend-mode'] = 'normal';
 var layer_telepules_11 = new L.geoJson(json_telepules_11, {
   attribution: '',
   pane: 'pane_telepules_11',
-  onEachFeature: pop_telepules_11,
   pointToLayer(feature, latlng) {
     return L.circleMarker(latlng, style_telepules_11_0(feature));
   },
 });
 bounds_group.addLayer(layer_telepules_11);
 map.addLayer(layer_telepules_11);
-layer_telepules_11.on('click', (e) => console.log(e.layer));
+layer_telepules_11.on('click', (e) => {
+  const key = Object.keys(e.layer._eventParents)[0];
+  console.log(e.layer._eventParents[key].feature.properties);
+});
 
 var baseMaps = {};
 L.control
