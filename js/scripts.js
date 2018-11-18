@@ -442,6 +442,7 @@ function style_telepules_11_0(feature) {
     case 'község':
       return {
         pane: 'pane_telepules_11',
+        shape: 'circle',
         radius: 4.0,
         opacity: 1,
         color: 'rgba(35,35,35,1.0)',
@@ -457,7 +458,6 @@ function style_telepules_11_0(feature) {
       return {
         pane: 'pane_telepules_11',
         shape: 'square',
-        radius: 8.0,
         opacity: 1,
         color: 'rgba(35,35,35,1.0)',
         dashArray: '',
@@ -471,6 +471,7 @@ function style_telepules_11_0(feature) {
     case 'nagyközség':
       return {
         pane: 'pane_telepules_11',
+        shape: 'circle',
         radius: 4.0,
         opacity: 1,
         color: 'rgba(128,116,27,1.0)',
@@ -485,6 +486,7 @@ function style_telepules_11_0(feature) {
     case 'város':
       return {
         pane: 'pane_telepules_11',
+        shape: 'circle',
         radius: 5.2,
         opacity: 1,
         color: 'rgba(128,17,25,1.0)',
@@ -507,7 +509,7 @@ var layer_telepules_11 = new L.geoJson(json_telepules_11, {
   attribution: '',
   pane: 'pane_telepules_11',
   pointToLayer(feature, latlng) {
-    return L.circleMarker(latlng, style_telepules_11_0(feature));
+    return L.shapeMarker(latlng, style_telepules_11_0(feature));
   },
 });
 bounds_group.addLayer(layer_telepules_11);
