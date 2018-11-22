@@ -1,7 +1,6 @@
 /* global
   L,
   json_kulterulet_0,
-  Autolinker,
   json_belterulet_1,
   json_pillango_2,
   json_folyo_polygon_3,
@@ -15,7 +14,8 @@
   json_telepules_11,
   resetLabels,
   addLabel,
-  labels
+  labels,
+  d3
 */
 
 const map = L.map('map', {
@@ -437,6 +437,18 @@ bounds_group.addLayer(layer_fout_10);
 map.addLayer(layer_fout_10);
 
 // Settlement
+function pop_telepules_11(feature, layer) {
+  layer.bindPopup(chart, { maxHeight: 400 }); // eslint-disable-line no-use-before-define
+  layer.off('click', this.openPopup, this);
+  layer.on('mouseover', function mover() {
+    if (document.getElementById('butterfly').checked) return;
+    this.openPopup();
+  });
+  layer.on('mouseout', function mout() {
+    if (document.getElementById('butterfly').checked) return;
+    this.closePopup();
+  });
+}
 function style_telepules_11_0(feature) {
   switch (String(feature.properties['Tel_status'])) {
     case 'község':
@@ -508,16 +520,13 @@ map.getPane('pane_telepules_11').style['mix-blend-mode'] = 'normal';
 var layer_telepules_11 = new L.geoJson(json_telepules_11, {
   attribution: '',
   pane: 'pane_telepules_11',
+  onEachFeature: pop_telepules_11,
   pointToLayer(feature, latlng) {
     return L.shapeMarker(latlng, style_telepules_11_0(feature));
   },
 });
 bounds_group.addLayer(layer_telepules_11);
 map.addLayer(layer_telepules_11);
-layer_telepules_11.on('click', (e) => {
-  const key = Object.keys(e.layer._eventParents)[0];
-  console.log(e.layer._eventParents[key].feature.properties);
-});
 
 var baseMaps = {};
 L.control
@@ -588,3 +597,61 @@ document.getElementById('butterfly').addEventListener('change', () => {
 document.getElementById('age').addEventListener('change', () => {
   map.removeLayer(layer_pillango_2);
 });
+
+function chart(e) {
+  // console.log(e);
+  const key = Object.keys(e._eventParents)[0]; // eslint-disable-line no-underscore-dangle
+  const { properties } = e._eventParents[key].feature; // eslint-disable-line no-underscore-dangle
+  const data = [
+    { label: 'gyermek', value: Number(properties.gyermek) },
+    { label: 'fiatal', value: Number(properties.fiatal) },
+    { label: 'középkorú', value: Number(properties.kozepkoru) },
+    { label: 'nyugdíjas', value: Number(properties.nyugdijas) },
+  ];
+
+  const width = 170;
+  const height = 140;
+  const r = 55;
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+  const arc = d3.arc()
+    .innerRadius(0)
+    .outerRadius(r);
+
+  const pie = d3.pie()
+    .value(d => d.value);
+
+  const arcs = pie(data);
+
+  const arcLabel = d3.arc().innerRadius(r).outerRadius(r);
+
+  var div = d3.create('div');
+  var svg = div.append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .attr('text-anchor', 'middle')
+    .style('font', '12px sans-serif');
+
+  const g = svg.append('g')
+    .attr('transform', `translate(${width / 2}, ${height / 2})`);
+
+  g.selectAll('path')
+    .data(arcs)
+    .enter().append('path')
+    .attr('fill', (d, i2) => color(i2))
+    .attr('stroke', 'white')
+    .attr('d', arc)
+    .append('title')
+    .text(d => d.data.label);
+
+  g.selectAll('text')
+    .data(arcs)
+    .enter()
+    .append('text')
+    .attr('transform', d => `translate(${arcLabel.centroid(d)})`)
+    .attr('dy', '0.35em')
+    .style('font-weight', 'bold')
+    .text(d => d.data.label);
+
+  return svg.node();
+}

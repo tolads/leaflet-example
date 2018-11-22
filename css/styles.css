@@ -19,3 +19,7 @@ h1 {
   height: calc(100vh - 100px);
   padding-right: 0;
 }
+
+.leaflet-popup-content {
+  padding-right: 0;
+}
