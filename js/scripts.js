@@ -533,30 +533,30 @@ L.control
   .layers(
     baseMaps,
     {
-      'település<br />\
+      'Település<br />\
         <table>\
-          <tr><td style="text-align: center;"><img src="legend/telepules_11_megyeijogúváros1.png" /></td><td>megyei jogú város</td></tr>\
-          <tr><td style="text-align: center;"><img src="legend/telepules_11_város3.png" /></td><td>város</td></tr>\
-          <tr><td style="text-align: center;"><img src="legend/telepules_11_nagyközség2.png" /></td><td>nagyközség</td></tr>\
-          <tr><td style="text-align: center;"><img src="legend/telepules_11_község0.png" /></td><td>község</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/telepules_11_megyeijogúváros1.png" /></td><td>Megyei jogú város</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/telepules_11_város3.png" /></td><td>Város</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/telepules_11_nagyközség2.png" /></td><td>Nagyközség</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/telepules_11_község0.png" /></td><td>Község</td></tr>\
         </table>':
         layer_telepules_11,
-      'főút<br />\
+      'Főút<br />\
         <table>\
-          <tr><td style="text-align: center;"><img src="legend/fout_10_autópálya0.png" /></td><td>autópálya</td></tr>\
-          <tr><td style="text-align: center;"><img src="legend/fout_10_autóút1.png" /></td><td>autóút</td></tr>\
-          <tr><td style="text-align: center;"><img src="legend/fout_10_elsőrendűút2.png" /></td><td>elsőrendű út</td></tr>\
-          <tr><td style="text-align: center;"><img src="legend/fout_10_másodrendűút3.png" /></td><td>másodrendű út</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/fout_10_autópálya0.png" /></td><td>Autópálya</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/fout_10_autóút1.png" /></td><td>Autóút</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/fout_10_elsőrendűút2.png" /></td><td>Elsőrendű út</td></tr>\
+          <tr><td style="text-align: center;"><img src="legend/fout_10_másodrendűút3.png" /></td><td>Másodrendű út</td></tr>\
         </table>':
         layer_fout_10,
-      '<img src="legend/ut_9.png" /> út': layer_ut_9,
-      '<img src="legend/vasut_8.png" /> vasút': layer_vasut_8,
-      '<img src="legend/to_6.png" /> tó': layer_to_6,
-      '<img src="legend/patak_5.png" /> patak': layer_patak_5,
-      '<img src="legend/folyo_vonal_4.png" /> folyó (vonal)': layer_folyo_vonal_4,
-      '<img src="legend/folyo_polygon_3.png" /> folyó (polygon)': layer_folyo_polygon_3,
-      '<img src="legend/belterulet_1.png" /> belterület': layer_belterulet_1,
-      '<img src="legend/kulterulet_0.png" /> külterület': layer_kulterulet_0,
+      '<img src="legend/ut_9.png" /> Út': layer_ut_9,
+      '<img src="legend/vasut_8.png" /> Vasút': layer_vasut_8,
+      '<img src="legend/to_6.png" /> Tó': layer_to_6,
+      '<img src="legend/patak_5.png" /> Patak': layer_patak_5,
+      '<img src="legend/folyo_vonal_4.png" /> Folyó (vonal)': layer_folyo_vonal_4,
+      '<img src="legend/folyo_polygon_3.png" /> Folyó (polygon)': layer_folyo_polygon_3,
+      '<img src="legend/belterulet_1.png" /> Belterület': layer_belterulet_1,
+      '<img src="legend/kulterulet_0.png" /> Külterület': layer_kulterulet_0,
     },
     { collapsed: false },
   )

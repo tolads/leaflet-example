@@ -23,3 +23,7 @@ h1 {
 .leaflet-popup-content {
   padding-right: 0;
 }
+
+.leaflet-control-layers-expanded {
+  background-color: #fcfcfc;
+}
