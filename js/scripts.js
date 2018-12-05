@@ -599,7 +599,6 @@ document.getElementById('age').addEventListener('change', () => {
 });
 
 function chart(e) {
-  // console.log(e);
   const key = Object.keys(e._eventParents)[0]; // eslint-disable-line no-underscore-dangle
   const { properties } = e._eventParents[key].feature; // eslint-disable-line no-underscore-dangle
   const data = [
